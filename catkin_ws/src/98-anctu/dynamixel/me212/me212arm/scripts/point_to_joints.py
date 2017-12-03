@@ -26,7 +26,7 @@ def to_joints(msg):
     target_xz.append(msg.x)
     target_xz.append(msg.z)
     
-    q_sol = planner.ik([target_xz], q0)
+    q_sol = planner.ik(target_xz, q0)
     #q_sol = [0, 0, 0]
 
     if q_sol is None:

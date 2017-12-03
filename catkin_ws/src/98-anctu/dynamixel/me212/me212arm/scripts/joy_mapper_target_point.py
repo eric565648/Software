@@ -24,7 +24,7 @@ class JoyMapper(object):
         self.sub_joy_ = rospy.Subscriber("joy", Joy, self.cbJoy, queue_size=1)
 
         #Steady the publish speed
-        #self.param_timer = rospy.Timer(rospy.Duration.from_sec(0.1),self.cbParamTimer)
+        self.param_timer = rospy.Timer(rospy.Duration.from_sec(0.02),self.cbParamTimer)
 
         # Target Points (initiallize to (x, z) = (0, 0.2) meters)
         self.tp = Point()
@@ -55,9 +55,9 @@ class JoyMapper(object):
         tp.y = 0
         tp.z = self.tp.z
         if self.joy.axes[0] > 0.5 or self.joy.axes[0] < -0.5:
-            tp.z = -(math.copysign(0.002, self.joy.axes[0])) + self.tp.z
+            tp.z = -(math.copysign(0.005, self.joy.axes[0])) + self.tp.z
         if self.joy.axes[1] > 0.5 or self.joy.axes[1] < -0.5:
-            tp.x = math.copysign(0.002, self.joy.axes[1]) + self.tp.x
+            tp.x = -(math.copysign(0.005, self.joy.axes[1])) + self.tp.x
         print 'tp', tp, 'self.tp', self.tp
         if tp != self.tp:
             print "different"
