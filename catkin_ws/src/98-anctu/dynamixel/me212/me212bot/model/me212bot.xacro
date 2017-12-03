@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="me212bot">
+    <!--xacro:include filename="$(find me212arm)/model/me212arm.xacro" /-->
+    <xacro:include filename="$(find me212arm)/model/mvpcrane_arm.xacro" />
+
+    <!--xacro:include filename="$(find me212base)/model/me212base.xacro" /-->
+    <xacro:include filename="$(find me212base)/model/mvpcrane.urdf" />
+    <xacro:property name="M_PI" value="3.1415926" />
+
+    <!-- connect robot moving base and robot arm base -->
+    <joint name="joint_base_arm" type="fixed">
+        <!--parent link="robot_base"/-->
+        <parent link="base_link"/>
+        <child link="arm_base"/>
+        <!--origin xyz="0.12 0 0.11" /-->
+        <origin rpy="0 ${M_PI/2} 0" xyz="0.15 0 0.07" />
+    </joint>
+
+</robot>
