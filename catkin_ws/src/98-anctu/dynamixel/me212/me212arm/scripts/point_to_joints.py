@@ -1,7 +1,5 @@
 #!/usr/bin/python
 
-# 2.12 Lab 5 trajectory planning
-# Peter Yu Oct 2016
 import rospy
 import planner
 import std_msgs.msg, sensor_msgs.msg
